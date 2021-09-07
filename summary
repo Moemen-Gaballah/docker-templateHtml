@@ -1,0 +1,14 @@
+docker pull nginx
+
+docker run -i -t -p 8084:80 nginx // interactive mode
+
+docker run -d -p 8084:80 nginx // deactive mode
+
+docker run --name az-nginx -p 8004:80 -v ~/Desktop/Docker/docker-with-it/mysite/html:/usr/share/nginx/html -d nginx 
+
+// docker run --name az-nginx -p 8004:80 -v $(pwd):/usr/share/nginx/html -d nginx 
+
+docker cp az-nginx:/etc/nginx/conf.d/default.conf ~/Desktop/Docker/docker-with-it/mysite/default.conf
+
+
+docker run --name az-nginx -p 8004:80 -v ~/Desktop/Docker/docker-with-it/mysite/html:/usr/share/nginx/html -v  ~/Desktop/Docker/docker-with-it/mysite/default.conf:/etc/nginx.conf.d -d nginx 
